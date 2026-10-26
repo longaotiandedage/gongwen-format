@@ -65,6 +65,7 @@ LaTeX（出 PDF）与 python-docx（出 DOCX）两条路线，并附带版面自
 
 \begin{document}
 \gworg{××大学教务处文件}       % 发文机关标志（红色小标宋）
+\gworg{\bfseries ××大学文件}      % 需要更粗的版头时加 \bfseries（合成粗体）
 \gwdocno{教字〔2026〕15 号}     % 发文字号 + 自动生成红色分隔线
 \gwtitle{关于开展××工作的通知} % 标题（2 号，居中）
 
