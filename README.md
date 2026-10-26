@@ -162,7 +162,7 @@ pip install python-docx pymupdf
 ### 作为 DSH 技能
 
 ```bash
-git clone git@github.com:longaotiandedage/gongwen-format.git
+git clone https://github.com/longaotiandedage/gongwen-format.git
 cp -r gongwen-format ~/.dsh/skills/
 ```
 
