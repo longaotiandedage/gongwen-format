@@ -1,5 +1,7 @@
 # gongwen-format
 
+![示例：按 GB/T 9704—2012 排版的公文首页](docs_preview.png)
+
 按 **GB/T 9704—2012《党政机关公文格式》** 排版中文公文与正式文档。
 
 提供两条可落地路线：LaTeX 出 PDF、python-docx 出 DOCX，附带一个版面校验脚本——
@@ -155,13 +157,58 @@ pip install python-docx pymupdf
 
 `check_fonts.py` 会报告实际命中哪一套。
 
-## 作为 DSH 技能安装
+## 安装
+
+### 作为 DSH 技能
 
 ```bash
+git clone git@github.com:longaotiandedage/gongwen-format.git
 cp -r gongwen-format ~/.dsh/skills/
 ```
 
-之后在 DSH 会话中提到"公文格式""红头文件""GB/T 9704"等即可自动加载。
+重启 DSH 后，会话中提到"公文格式""红头文件""GB/T 9704"等即可自动加载该技能。
+
+技能本身是纯文本（Markdown 说明 + 脚本 + LaTeX 样式包），不含可执行依赖；
+具体排版时才需要下文的 TeX Live 等工具。
+
+### 独立使用（不用 DSH）
+
+把 `assets/gongwen.sty` 复制到你的 LaTeX 工程目录，然后：
+
+```latex
+\documentclass[UTF8, fontset=none, twoside]{ctexart}
+\usepackage{gongwen}
+```
+
+`scripts/` 下的四个脚本也可单独调用：
+
+| 脚本 | 作用 | 依赖 |
+|---|---|---|
+| `build_pdf.sh` | 构建 PDF（xelatex 多遍） | TeX Live |
+| `gongwen_docx.py` | 生成 DOCX | python-docx |
+| `verify_layout.py` | 校验版面 | PyMuPDF（PDF）/ python-docx（DOCX） |
+| `check_fonts.py` | 检查本机字体 | 无 |
+
+```bash
+pip install python-docx pymupdf
+```
+
+### 依赖说明
+
+| 用途 | 需要什么 | 不装会怎样 |
+|---|---|---|
+| 生成 PDF | TeX Live 2024 + 中文字体 | 无法出 PDF，其余功能不受影响 |
+| 生成 DOCX | python-docx | 无法出 DOCX |
+| 校验 PDF 版面 | PyMuPDF | 只能校 DOCX |
+| 校验 DOCX 版面 | python-docx | 只能校 PDF |
+
+### 卸载
+
+```bash
+rm -rf ~/.dsh/skills/gongwen-format
+```
+
+技能不写入任何全局路径，删除目录即完全移除。
 
 ## 参考
 
