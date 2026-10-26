@@ -1,0 +1,30 @@
+# LaTeX 中间产物
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+missfont.log
+texput.log
+
+# 构建时临时复制的样式包（由 build_pdf.sh 自动清理，保险起见再忽略）
+examples/gongwen.sty
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# 预览与临时目录
+.preview.*
+.dsh-office.*
+*.tmp
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

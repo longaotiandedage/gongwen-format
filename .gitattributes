@@ -1,0 +1,14 @@
+# 统一换行符：源码与脚本一律 LF，避免 Windows 检出后 shell 脚本在 Unix 上失败
+* text=auto eol=lf
+
+# 需要保持 LF 的可执行脚本
+*.sh    text eol=lf
+*.py    text eol=lf
+*.md    text eol=lf
+*.sty   text eol=lf
+*.tex   text eol=lf
+
+# 二进制产物不做换行转换
+*.pdf   binary
+*.docx  binary
+*.png   binary
